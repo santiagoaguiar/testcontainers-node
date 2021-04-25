@@ -10,7 +10,7 @@ import { AuthConfig } from "../docker-client";
 import { log } from "../logger";
 
 const DEFAULT_REGISTRY_NAME = "index.docker.io";
-const dockerConfigFile = path.resolve(os.homedir(), ".docker", "config.json");
+const dockerConfigFile = process.env.DOCKER_CONFIG_FILE || path.resolve(os.homedir(), ".docker", "config.json");
 
 const readDockerConfig = async (): Promise<DockerConfig> => {
   if (!existsSync(dockerConfigFile)) {
